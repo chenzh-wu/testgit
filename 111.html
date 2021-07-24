@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 400px;
+      margin: 100px auto 0;
+    }
+
+    .item {
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .item>div {
+      float: left;
+    }
+
+    .star-box {
+      overflow: hidden;
+      margin: 0 10px;
+    }
+
+    .star-box>span {
+      float: left;
+      width: 20px;
+      height: 20px;
+      background: url("./icons/star.png") no-repeat center center;
+      background-size: 20px 20px;
+    }
+
+    .star-box>span.active {
+      background-image: url("./icons/star_active.png");
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app" class="box">
+
+    <div class="item" v-for="(item, index) in starData" :key="index">
+      <div>{{item.name}}：</div>
+      <div class="star-box">
+        <span :class="{active: item1.isActive}" v-for="(item1, index1) in item.starNum" :key="index1" @click="giveMark(index, index1)"></span>
+      </div>
+      <div>
+        <span>{{item.starTitle}}：{{item.activeStar}}</span>
+      </div>
+    </div>
+
+
+    <button @click="commit" type="button">提交</button>
+
+  </div>
+
+  <script src="./dist/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+
+        //name：标题, starNum: 初始星数，index：用于判断点击第几个星
+        starData: [
+          { 
+            flag: 'wl',
+            name: '物流速度', 
+            starNum: [
+              {isActive: false},
+              {isActive: false},
+              {isActive: false},
+              {isActive: false},
+              {isActive: false}
+            ], 
+            index: -1, 
+            starTitle: '星数',
+            activeStar: 0
+          },
+          { flag: 'fw', name: '服务情况', starNum: [
+              {isActive: false},
+              {isActive: false},
+              {isActive: false},
+              {isActive: false},
+              {isActive: false}
+            ], index: -1, starTitle: '星数', activeStar: 0 },
+          { flag: 'sp', name: '商品质量', starNum: [
+              {isActive: false},
+              {isActive: false},
+              {isActive: false},
+              {isActive: false},
+              {isActive: false}
+            ], index: -1, starTitle: '星数', activeStar: 0 },
+          { flag: 'sh', name: '售后服务', starNum: [
+              {isActive: false},
+              {isActive: false},
+              {isActive: false},
+              {isActive: false},
+              {isActive: false}
+            ], index: -1, starTitle: '星数', activeStar: 0 }
+        ],
+      },
+
+      methods: {
+
+        giveMark(row, col) {
+          //row: 行
+          //col: 列
+
+          //如果上一激活的星数比当前激活的星数多时
+          if (this.starData[row].index > col) {
+            for (let i = col + 1; i < this.starData[row].starNum.length; i++) {
+              this.starData[row].starNum[i].isActive = false;
+            }
+          }
+          
+          for (let i = 0; i <= col; i++) {
+            this.starData[row].starNum[i].isActive = this.starData[row].index != col;
+          }
+         
+          if (this.starData[row].index == col) {
+            this.starData[row].index = -1;
+          } else {
+            this.starData[row].index = col;
+          }
+          
+
+          //激活的星数
+          this.starData[row].activeStar = this.starData[row].index + 1;
+
+        },
+
+        commit() {
+
+          let data = {
+            wl: 0,
+            fw: 0,
+            sp: 0,
+            sh: 0
+          };
+
+          this.starData.map(v => {
+            data[v.flag] = v.activeStar;
+          })
+
+          //发起http ajax
+
+          console.log('data ==> ', data);
+
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <style>
+        html,
+        body,
+        ul,
+        input {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .box {
+            width: 400px;
+            height: 400px;
+            background-color: lightcoral;
+            margin: 100px auto;
+            overflow: hidden;
+
+        }
+
+        .box .my-div {
+            margin-top: 50px;
+        }
+
+        .box input {
+            display: block;
+            width: 338px;
+            height: 28px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        .box button {
+            display: block;
+            width: 100px;
+            height: 28px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        .box .ul1 {
+            width: 340px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .box .ul1 li {
+            float: left;
+            width: 28px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+            margin: 2px 2px;
+        }
+
+        .box .ul2 {
+            width: 306px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .box .ul2 li {
+            float: left;
+            width: 28px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+            margin: 2px 2px;
+        }
+
+        .ul3-div {
+            width: 306px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .box .ul3 {
+            width: 238px;
+            margin: 0 auto;
+            overflow: hidden;
+
+        }
+
+        .ul3-div .left-icon {
+            width: 34px;
+            height: 28px;
+            border: 1px solid #CCC;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 28px;
+            position: absolute;
+            left: -15px;
+            top: 2px;
+        }
+
+        .ul3-div .right-icon {
+            width: 34px;
+            height: 28px;
+            border: 1px solid #CCC;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 28px;
+            position: absolute;
+            top: 2px;
+            right: -15px;
+        }
+
+        .box .ul3 li {
+            float: left;
+            width: 28px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+            margin: 2px 2px;
+        }
+
+        .box .ul4 {
+            width: 340px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .box .ul4 li {
+            float: left;
+            margin: 2px 3px;
+        }
+
+        .box .ul4 .uli1 {
+            width: 34px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+            font-size: 13px;
+            background-color: #f0f0f0;
+
+        }
+
+        .box .ul4 .uli2 {
+            width: 34px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+            font-size: 13px;
+            background-color: #f0f0f0;
+        }
+
+        .box .ul4 .uli3 {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+        }
+
+        .box .ul4 .uli4 {
+            width: 127px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+        }
+
+        .box .ul4 .uli5 {
+            width: 77px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="box">
+
+
+            <my-div></my-div>
+            <!-- <ul class="ul4">
+                <li class="uli1">123</li>
+                <li class="uli2 iconfont icon-wangluo"></li>
+                <li class="uli3 iconfont icon-yanjizhushou-shangchuan_maikefeng"></li>
+                <li class="uli4">空格</li>
+                 <li class="uli5">搜索</li>
+               
+            </ul>  -->
+        </div>
+    </div>
+    <script src="./dist/vue.js"></script>
+    <script>
+        Vue.component("my-div", {
+            template: `<div class="my-div">
+            <input type="text" v-model="jis">
+            <ul class="ul1">
+                <li v-for="(item ,index) in zimu.num1" :key="index" @click="shuzi(item)">{{item}}</li>
+              </ul>
+            <ul class="ul1">
+                <li v-for="(item1 ,index) in zimu.num2" :key="index"  @click="shuzi1(item1)">{{item1}}</li>
+              </ul>
+              <ul class="ul2">
+                <li v-for="(item2 ,index) in zimu.num3" :key="index" @click="shuzi2(item2)">{{item2}}</li>
+              </ul>
+              <div class="ul3-div"> <ul class="ul3">
+                <li v-for="(item3 ,index) in zimu.num4" :key="index" @click="shuzi3(item3)">{{item3}}</li>
+                </ul>
+                <span class="left-icon iconfont icon-daxie" @click="edit" ></span>
+                 <span class="right-icon iconfont icon-guanbi" @click="guanbi"></span>
+             
+                </div>
+                <ul class="ul4">
+                <li class="uli1">123</li>
+                <li class="uli2 iconfont icon-wangluo"></li>
+                <li class="uli3 iconfont icon-yanjizhushou-shangchuan_maikefeng"></li>
+                <li class="uli4">空格</li>
+                 <li class="uli5">搜索</li>
+               
+            </ul> 
+              
+             
+              </div>`,
+            data: function () {
+                return {
+                    zimu: {
+                        num1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+                        num2: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+                        num3: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+                        num4: ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+
+                    },
+                    daxie: {
+                        num1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+                        num2: ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+                        num3: ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+                        num4: ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
+                        num5: [" ",]
+
+                    },
+                    isflag: true,
+                    jis: "",
+                    zhonh:{}
+                }
+            },
+            methods: {
+                shuzi(item) {
+                    console.log(item)
+                    this.jis += item
+                },
+                shuzi1(item) {
+                    console.log(item)
+                    this.jis += item
+                },
+                shuzi2(item) {
+                    console.log(item)
+                    this.jis += item
+                },
+                shuzi3(item) {
+                    console.log(item)
+                    this.jis += item
+                },
+                guanbi() {
+                    this.jis = this.jis.substr(0, this.jis.length - 1)
+                },
+                edit() {
+                    if (this.isflag) {
+                        this.zhonh=this.zimu
+                       this.zimu = this.daxie;
+                        
+                      
+                    } else {
+                        this.zimu=this.zhonh;
+                        console.log("qq11")
+                    }
+                    this.isflag = !this.isflag;
+                }
+
+
+
+            },
+
+
+        })
+        var vm = new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+
+</html>

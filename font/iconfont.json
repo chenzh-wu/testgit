@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1494665",
+      "name": "网络",
+      "font_class": "wangluo",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "3143215",
+      "name": "大写",
+      "font_class": "daxie",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "4957384",
+      "name": "麦克风",
+      "font_class": "yanjizhushou-shangchuan_maikefeng",
+      "unicode": "e50d",
+      "unicode_decimal": 58637
+    },
+    {
+      "icon_id": "6139364",
+      "name": "关  闭",
+      "font_class": "guanbi",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    }
+  ]
+}

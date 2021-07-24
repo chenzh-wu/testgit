@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <style>
+        html ,body,ul ,input{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            background-color: lightcoral;
+            margin: 100px auto;
+            overflow: hidden;
+            
+        }
+        .box .my-div{
+            margin-top: 50px ;
+        }
+        .box input{
+            display: block;
+            width: 338px;
+            height: 28px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+           
+            margin: 0 auto;
+            margin-bottom: 10px;    
+        }
+        .box button{
+            display: block;
+            width:100px;
+            height: 28px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin:0 auto;
+            margin-top: 10px;    
+        }
+        .box .ul1{
+            width: 340px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .box .ul1 li{
+            float: left;
+            width: 28px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+            margin: 2px 2px;
+        }
+       .box .ul2{
+            width: 306px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .box .ul2 li{
+            float: left;
+            width: 28px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px; 
+            margin: 2px 2px;
+        }
+        .ul3-div {
+            width: 306px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .box .ul3{
+            width: 238px;
+            margin: 0 auto;
+            overflow: hidden;
+            
+        }
+        .ul3-div .left-icon{
+            width: 34px;
+            height: 28px;
+            border: 1px solid #CCC;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 28px; 
+            position: absolute;
+            left: -15px;
+            top: 2px;
+        }
+        .ul3-div .right-icon{
+            width: 34px;
+            height: 28px;
+            border: 1px solid #CCC;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 28px; 
+            position: absolute;
+            top: 2px;
+            right: -15px;
+        }
+        .box .ul3 li{
+            float: left;
+            width: 28px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px; 
+            margin: 2px 2px;
+        }
+        .box .ul4 {
+            width: 340px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .box .ul4 li{
+            float: left;
+            margin: 2px 3px;
+        }
+        .box .ul4 .uli1{
+            width: 34px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px; 
+            font-size: 13px;
+            background-color: #f0f0f0;
+           
+        }
+        .box .ul4 .uli2{
+            width: 34px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px; 
+            font-size: 13px;
+            background-color: #f0f0f0;
+        }
+        .box .ul4 .uli3{
+            width: 28px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px; 
+        }
+        .box .ul4 .uli4{
+            width: 127px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px; 
+        }
+        .box .ul4 .uli5{
+            width: 77px;
+            height: 28px;
+            border: 1px solid #CCC;
+            text-align: center;
+            line-height: 28px;
+            background-color: lightblue ;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="box">
+          
+           
+            <my-div></my-div>
+           <!-- <ul class="ul4">
+                <li class="uli1">123</li>
+                <li class="uli2 iconfont icon-wangluo"></li>
+                <li class="uli3 iconfont icon-yanjizhushou-shangchuan_maikefeng"></li>
+                <li class="uli4">空格</li>
+                 <li class="uli5">搜索</li>
+               
+            </ul>  -->
+        </div>
+    </div>
+    <script src="./dist/vue.js"></script>
+    <script>
+        Vue.component("my-div",{
+            template:`<div class="my-div">
+            <input type="text">
+            <ul class="ul1">
+                <li v-for="(item ,index) in zimu[0]" :key="index">{{item}}</li>
+              </ul>
+            <ul class="ul1">
+                <li v-for="(item ,index) in zimu[1]" :key="index">{{item}}</li>
+              </ul>
+              <ul class="ul2">
+                <li v-for="(item ,index) in zimu[2]" :key="index">{{item}}</li>
+              </ul>
+              <div class="ul3-div"> <ul class="ul3">
+                <li v-for="(item ,index) in zimu[3]" :key="index">{{item}}</li>
+                </ul>
+                <span class="left-icon iconfont icon-daxie"  @click="edit"></span>
+                 <span class="right-icon iconfont icon-guanbi"></span>
+             
+                </div>
+                <ul class="ul4">
+                <li class="uli1">123</li>
+                <li class="uli2 iconfont icon-wangluo"></li>
+                <li class="uli3 iconfont icon-yanjizhushou-shangchuan_maikefeng"></li>
+                <li class="uli4">空格</li>
+                 <li class="uli5">搜索</li>
+               
+            </ul> 
+              
+             
+              </div>` ,
+            data:function(){
+                return{
+                    zimu:[
+                        [1,2,3,4,5,6,7,8,9,0],
+                        ['q','w','e','r','t','y','u','i','o','p'],
+                        ['a','s','d','f','g','h','j','k','l'],
+                        ['z','x','c','v','b','n','m']
+                       
+                    ],
+                    daxie:[
+                        [1,2,3,4,5,6,7,8,9,0],
+                        ['Q','W','E','R','T','Y','U','I','O','P'],
+                        ['A','S','D','F','G','H','J','K','L'],
+                        ['Z','X','C','V','B','N','M']
+                       
+                    ],
+                    isflag:true
+                }
+            },
+            methods:{
+                edit(){
+                    if(!this.isflag){
+                        // this.zimu=this.daxie;
+                        this.daxie=this.zimu;
+                        this.isflag=true;
+                        // this.isflag=false;
+                     console.log( this.isflag)
+                     
+                 }else{
+                    // this.daxie=this.zimu;
+                    this.zimu=this.daxie;
+                    this.isflag=false;
+                    // this.isflag=true;
+                    console.log( this.isflag)
+                }  
+                   
+                }
+           
+                
+                
+            },
+          
+              
+        })
+        var vm=new Vue({
+            el:"#app"
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>写好的</p>
+        <h3>全局注册组件</h3>
+        <!-- 使用组件 -->
+        <my-div></my-div>
+    </div>
+</body>
+<script src="./dist/vue.js"></script>
+<script>
+    //全局注册组件
+    //Vue.component(组件名称，组件配置)
+
+    Vue.component("my-cat",{
+        template:'<div><span>{{text}}</span></div>',
+        data(){
+            return {
+                text:"我的猫组件"
+            }
+        }
+    })
+    Vue.component("my-div",{
+        //模板,必须写 ，模板只有一个父元素
+        template:`<div>
+                    <my-cat></my-cat>
+                    我是全局组件。。{{comName}}
+                    <ul>
+                    <li v-for="(item ,i) in cities" :key="i">{{item.name}} <button @click="edit(i)" v-show="!item.isflas">修改</button><button  @click="add(i)" v-show="item.isflas">成功</button><input v-show="item.isflas" v-model="name" /></li>
+                    </ul>
+                    <h3>{{city}}</h3>
+                   </div> `,
+        //组件数据模型在data函数定义
+        data(){
+            return{
+                comName:"我的div组件",
+                name:"",
+                cities:[{name:'杭州', isflas:false},
+                         {name:'惠州',isflas:false} ,  
+                         {name:'滁州',isflas:false} ,  
+                         {name:'苏州',isflas:false} ,  
+                         {name:'广州',isflas:false} ,  
+                        ],
+                price:100,
+               
+            }
+        },
+        //方法定义
+        methods:{
+           changeComName(name){
+               this.comName=name;
+           },
+           add(i){
+                this.cities[i].isflas=false;
+                this.cities[i].name=this.name;
+                this.name="";
+
+
+            },
+            edit(i){
+                this.cities[i].isflas=true;
+            }
+        },
+        computed:{
+            city(){
+                //获取随机下标
+               
+                    let index=Math.floor(Math.random()*this.cities.length)
+                    let city=this.cities[index].name
+                    return city
+                
+               
+            }
+        },
+        //侦听模型变化
+        watch: {
+            comName(newValue,oldValue){
+
+            }
+        },
+        //管道（过滤器）
+
+    })
+
+    let vm=new Vue({
+        el:"#app",
+        //组件的模板
+        //template:` <div id="app">{{msg}}</div>`,
+        data:{
+            msg:"特殊组件"
+        }
+    })
+</script>
+</html>
